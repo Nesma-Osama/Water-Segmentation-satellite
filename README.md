@@ -55,10 +55,10 @@ Each input image is a multi-spectral image with dimensions 128x128x12, where the
 3- Run the App Using Docker
   
   Pull the pre-built Docker image from Docker Hub:
-  ```docker run -p 5000:5000 nesmaosama/segmentation-app:latest```
+  ```docker pull nesmaosama/segmentation-app```
   
   Then run the container:
-  ```docker run -p 5555:5555 nesmaosama/segmentation-app:latest```
+  ```docker run -p 5555:5555 nesmaosama/segmentation-app```
 
   This will start the Flask server on http://localhost:5555
   
