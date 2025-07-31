@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@1,400;1,600&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>WaterLens </title>
+</head>
+
+<body>
+    <header>
+        <dev class="header-title">
+            <h1>WaterLens</h1>
+            <h1>Detect Water from Space</h1>
+        </dev>
+        <p>
+            WaterLens is an AI-powered web application that analyzes satellite images to accurately detect and highlight
+            water bodies. Whether you're monitoring lakes, rivers, or coastal areas, our deep learning model transforms
+            raw satellite data into clear water masks, helping researchers, environmentalists, and decision-makers gain
+            deeper insights into Earth's water resources. Upload an image and let WaterLens reveal the water beneath the
+            clouds.
+        </p>
+
+    </header>
+    <main>
+        <div class="data-info">
+            <h2>About the Data</h2>
+            <p>
+                Each image used in WaterLens has <strong>12 channels</strong>, representing various satellite data
+                layers:
+            </p>
+            <ul>
+                {% for band in bands %}
+                <li>{{ band }}</li>
+                {%endfor %}
+            </ul>
+            <p>
+                The input image should have a fixed size of <strong>128 x 128 pixels</strong>.
+            </p>
+            <p>
+                <strong>Output:</strong> After analysis, the system will generate a <strong>water mask</strong>,
+                highlighting the detected water areas in the image.
+            </p>
+        </div>
+        <dev class="Example">
+            <h2>Example</h2>
+
+            <div class="display-section">
+                <h3>Image Bands</h3>
+                <div class="channel-grid">
+                    {% for i in range(REQUIRED_CHANNELS) %}
+                    <div class="channel">
+                        <p>{{bands[i] }}</p>
+                        <img src="{{ channels[i] }}" alt="{{bands[i] }}" width="128" height="128">
+                    </div>
+                    {% endfor %}
+                </div>
+                <div class="result">
+                    <h3>Segmentation Result</h3>
+                    <img src="{{ mask }}" alt="Segmentation Result" width="128" height="128">
+
+                </div>
+        </dev>
+        <dev class="upload-section">
+            <h2>Upload Image</h2>
+            <form action="{{ url_for('upload') }}" method="post" enctype="multipart/form-data">
+                <label for="image">Choose a TIFF image:</label><br>
+                <input type="file" id="image" name="image" accept=".tif" required><br><br>
+                <button type="submit">Upload and Analyze</button>
+            </form>
+
+    </main>
+</body>
+
+</html>

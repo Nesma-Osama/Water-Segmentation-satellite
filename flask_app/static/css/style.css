@@ -1,0 +1,56 @@
+body{
+    background-color:black;
+    color:white;
+    padding:20px;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-style: italic;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+header h1{
+    font-size:2.5em;
+    color: #ffa500;
+    font-weight: 600;
+
+}
+.header-title{
+    display: flex;
+    justify-content:space-between;
+}
+p{
+    text-align:justify;
+    font-size: 1.2em;
+    font-weight: 400;
+    width: 90%;
+
+}
+main{
+    width: 100%;
+}
+main h2{
+    font-size: 2em;
+    color: #ffa500;
+    font-weight: 600;
+}
+main h3{
+    font-size: 1.5em;
+    color: yellow;
+    font-weight: 600;
+}
+
+.data-info ul{
+    color:yellow;
+}
+.channel-grid{
+    width: 100%;
+    display: grid;
+    justify-self:center;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 10px;
+    margin-inline: auto;
+}
+.channel-grid .channel p{
+    color: yellow;
+}
