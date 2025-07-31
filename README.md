@@ -36,4 +36,29 @@ Each input image is a multi-spectral image with dimensions 128x128x12, where the
 
   Tuned for performance on 128x128x12 multi-channel images.
 
-🎯 Pre-trained UNet
+- Pre-trained UNet
+
+  - Keras: Used ResNet101 as the encoder backbone with the segmentation_models library.
+  - PyTorch: Implemented using ResNet34 as the encoder via the segmentation_models_pytorch library.
+ 
+## 🚀 How to Run the Flask App
+
+1- Generate the Trained Model
+
+  Open and run ```Water_Segmentation.ipynb``` to train the model. Once training is complete, save the   model as ```model.h5```.
+
+2- Place the Model File
+
+  Move the saved model.h5 file to the following path in your project directory:
+```flask_app/static/model/model.h5```
+
+3- Run the App Using Docker
+  
+  Pull the pre-built Docker image from Docker Hub:
+  ```docker run -p 5000:5000 nesmaosama/segmentation-app:latest```
+  
+  Then run the container:
+  ```docker run -p 5555:5555 nesmaosama/segmentation-app:latest```
+
+  This will start the Flask server on http://localhost:5555
+  
